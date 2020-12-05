@@ -48,12 +48,6 @@ type Claims struct {
 	// the context of the issuer or, in cases where that is not possible, globally unique. Handling of
 	// this claim is application specific.
 	Subject string `json:"sub,omitempty"`
-	// Either a single string or URI or an array of such
-	// values that uniquely identify the intended recipients of this JWT. In other words, when this
-	// claim is present, the party reading the data in this JWT must find itself in the aud claim or
-	// disregard the data contained in the JWT. As in the case of the iss and sub claims, this claim
-	// is application specific.
-	Audience []string `json:"aud,omitempty"`
 }
 
 // Age returns the total age of the claims,
@@ -125,10 +119,6 @@ func (c Claims) ApplyClaims(dest *Claims) {
 
 	if v := c.Subject; v != "" {
 		dest.Subject = v
-	}
-
-	if v := c.Audience; len(v) > 0 {
-		dest.Audience = v
 	}
 }
 

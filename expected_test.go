@@ -14,7 +14,6 @@ func TestExpected(t *testing.T) {
 		ID:        "my-jti",
 		Issuer:    "my-iss",
 		Subject:   "1194",
-		Audience:  []string{"aud1", "aud2"},
 	}
 
 	err := fmt.Errorf("test err")
@@ -30,7 +29,6 @@ func TestExpected(t *testing.T) {
 		ID:        "my-jti",
 		Issuer:    "my-iss",
 		Subject:   "1194",
-		Audience:  []string{"aud1", "aud2"},
 	}, nil)
 	if err != nil {
 		t.Fatalf("expected nil error but got: %v", err)
@@ -122,8 +120,7 @@ func TestExpected(t *testing.T) {
 		Expiry:    expected.Expiry,
 		ID:        expected.ID,
 		Issuer:    expected.Issuer,
-		Subject:   expected.Subject,
-		Audience:  []string{"aud1", "aud2", "aud3"}}, nil)
+		Subject:   expected.Subject}, nil)
 	if !errors.Is(gotErr, ErrExpected) {
 		t.Fatalf("expected error to be ErrExpired but got: %#+v", gotErr)
 	}
@@ -138,8 +135,7 @@ func TestExpected(t *testing.T) {
 		Expiry:    expected.Expiry,
 		ID:        expected.ID,
 		Issuer:    expected.Issuer,
-		Subject:   expected.Subject,
-		Audience:  []string{"aud1", "aud3"}}, nil)
+		Subject:   expected.Subject}, nil)
 	if !errors.Is(gotErr, ErrExpected) {
 		t.Fatalf("expected error to be ErrExpired but got: %#+v", gotErr)
 	}

@@ -71,17 +71,5 @@ func (e Expected) ValidateToken(token []byte, c Claims, err error) error {
 		}
 	}
 
-	if n := len(e.Audience); n > 0 {
-		if n != len(c.Audience) {
-			return fmt.Errorf("%w: aud (length)", ErrExpected)
-		}
-
-		for i := range c.Audience {
-			if v := e.Audience[i]; v != c.Audience[i] {
-				return fmt.Errorf("%w: aud (%q)", ErrExpected, v)
-			}
-		}
-	}
-
 	return nil
 }

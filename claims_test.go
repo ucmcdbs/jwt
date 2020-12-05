@@ -77,7 +77,6 @@ func TestApplyClaims(t *testing.T) {
 		ID:        "id",
 		Issuer:    "issuer",
 		Subject:   "subject",
-		Audience:  []string{"aud"},
 	}
 
 	var dest Claims

@@ -61,9 +61,10 @@ func decodeToken(alg Alg, key PublicKey, token []byte) ([]byte, []byte, []byte, 
 		return nil, nil, nil, err
 	}
 	// validate header equality.
-	if !compareHeader(alg.Name(), headerDecoded) {
-		return nil, nil, nil, ErrTokenAlg
-	}
+	// TODO: make it compatible with Oracle IAM etc.
+	// if !compareHeader(alg.Name(), headerDecoded) {
+	// 	return nil, nil, nil, ErrTokenAlg
+	// }
 
 	signatureDecoded, err := Base64Decode(signature)
 	if err != nil {
