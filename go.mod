@@ -1,3 +1,3 @@
-module github.com/kataras/jwt
+module github.com/ucmcdbs/jwt
 
-go 1.15
+go 1.16
