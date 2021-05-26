@@ -80,11 +80,12 @@ func validateClaims(t time.Time, claims Claims) error {
 		}
 	}
 
-	if claims.IssuedAt > 0 {
-		if now < claims.IssuedAt {
-			return ErrIssuedInTheFuture
-		}
-	}
+	// GBM: Ignore temporarily, a terrible workaround for NTP configuration issue
+	// if claims.IssuedAt > 0 {
+	// 	if now < claims.IssuedAt {
+	// 		return ErrIssuedInTheFuture
+	// 	}
+	// }
 
 	if claims.Expiry > 0 {
 		if now > claims.Expiry {
